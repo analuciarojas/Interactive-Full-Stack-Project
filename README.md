@@ -6,7 +6,7 @@
 - I WANT  to see other peoples quizzes
 - SO THAT I can also learn other subjects
 - WHEN I have created a quiz 
-- I WANT to make it public for everyone to see and use 
+- I WANT to make it public for everyone to see and learn from  
 
 ## Description
 
