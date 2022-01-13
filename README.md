@@ -1,5 +1,13 @@
 # Quick Quack Quiz
 
+- AS A person who wants to learn 
+- I WANT to be able to study with interactive quizzes 
+- SO THAT I can be able to learn while having fun
+- I WANT  to see other peoples quizzes
+- SO THAT I can also learn other subjects
+- WHEN I have created a quiz 
+- I WANT to make it public for everyone to see and learn from  
+
 ## Description
 
 ## Table of Contents
