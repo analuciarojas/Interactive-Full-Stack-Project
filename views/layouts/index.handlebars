@@ -6,10 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quick Quack Quiz</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="../main.handlebars"></script>
 </head>
 
 <body>
+  <div class="main-container">
+      {{!> header }}
       {{{ body }}}
+      {{!> footer }}
+  </div>
 </body>
 </html>
 
