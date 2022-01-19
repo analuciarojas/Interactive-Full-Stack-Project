@@ -15,6 +15,21 @@
         <button><a href="/login">login</a></button>
         <button><a href="/signup">signup</a></button>
         {{/if}}
+
+        <!-- The first quiz -->
+        <div>
+        {{#each questions}}
+        <div class="form-group mt-4 mb-4">
+          <h4>{{question}}</h4>
+          <input type="radio" name="question{{@index}}" value="{{correctAnswer}}">{{correctAnswer}}<br>
+          <input type="radio" name="question{{@index}}" value="{{answer2}}">{{answer2}}<br>
+          <input type="radio" name="question{{@index}}" value="{{answer3}}">{{answer3}}<br>
+          <input type="radio" name="question{{@index}}" value="{{answer4}}">{{answer4}}<br>
+        </div>
+        <div id="answer{{@index}}" role="alert"></div>
+        <button type="button" class="btn btn-primary w-100" id="button{{@index}}">Check your answer</button>
+        {{/each}}
+        </div>
       </nav>
     </header>
     <main>
@@ -28,6 +43,7 @@
   {{#if loggedIn}}
   <script src="/controllers/home-routes.js"></script>
   {{/if}}
+
 </body>
 
 </html>
