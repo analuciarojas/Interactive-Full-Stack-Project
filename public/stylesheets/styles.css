@@ -9,7 +9,7 @@ button {
     border-radius: 5px;
   }
 
-  button:hover {
+button:hover {
     background-color: #f6e22e;
     color: #0694bc
   }

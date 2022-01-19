@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>...</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-
 <body>
   <div class="wrapper">
     <header>
@@ -19,8 +12,10 @@
         <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <button><a href="/login">login</a></button>
+        <button><a href="/signup">signup</a></button>
         {{/if}}
+
       </nav>
     </header>
     <main>
@@ -32,7 +27,7 @@
   </div>
   
   {{#if loggedIn}}
-  <script src=""></script>
+  <script src="/controllers/home-routes.js"></script>
   {{/if}}
 </body>
 
