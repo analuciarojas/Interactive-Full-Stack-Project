@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-    res.render('main', {
+    res.render('index', {
         id: 1,
         post_url: '.',
         title: 'Quick Quack Quiz',
