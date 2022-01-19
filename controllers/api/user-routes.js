@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Quiz, Category } = require('../../models');
+const {passwordConfirm} = require('../../utils/auth')
 
 router.get('/', (req, res) => {
     User.findAll({
@@ -17,7 +18,7 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: { 
             id: req.params.id,
-            attribute: ['first_name', 'last_name']
+            attribute: ['email']
         },
         include: [
             {
@@ -32,14 +33,14 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
     User.create({
         email: req.body.email,
         password: req.body.password
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
-        console.log(500).json(err);
+        console.log(err);
     });
 });
 
@@ -50,14 +51,20 @@ router.post('/login', (req, res) => {
         }
     }).then(dbUserData => {
         if (!dbUserData) {
-            res.satatus(400).json({ message: 'No User with that email address' });
+            res.status(400).json({ message: 'No User with that email address' });
             return;
         }
-        const validPassword = dbUserData.checkPassword(req.body.password);
+        const validPassword = passwordConfirm(req.body.password, dbUserData.password);
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password' });
             return;
+            
         }
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+        });
         res.json({ user: dbUserData, message: `Welcome ${ User } You are now logged in...` });
     });
 });

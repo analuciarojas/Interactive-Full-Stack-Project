@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-    res.render('main', {
+    res.render('index', {
         id: 1,
         post_url: '.',
         title: 'Quick Quack Quiz',
@@ -21,6 +21,18 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('signup')
 })
+
+// router.get('/', async (req, res) => {
+//   try {
+//     const dbQuizData = await Post.findAll({
+//       include: [User],
+//     });
+//     const posts = dbQuizData.map((dbQuizData) => post.get({ plain: true }));
+//     res.render('all-quizzes', { posts });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
     
