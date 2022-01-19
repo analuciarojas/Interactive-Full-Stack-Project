@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>
+        <a href="/public/media/Untitled-3.png">Quick Quack Quiz!</a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
+        <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
+        <button><a href="/login">login</a></button>
+        <button><a href="/signup">signup</a></button>
+        {{/if}}
+      </nav>
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      Thanks for visiting!
+    </footer>
+  </div>
+  
+  {{#if loggedIn}}
+  <script src="/controllers/home-routes.js"></script>
+  {{/if}}
+</body>
+
+</html>
