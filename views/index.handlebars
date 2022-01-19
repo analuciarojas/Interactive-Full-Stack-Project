@@ -4,30 +4,22 @@
 <body>
   <div class="wrapper">
     <header>
-      <h1>
-        <a href="/">Quick Quack Quiz!</a>
-      </h1>
       <nav>
-        {{#if loggedIn}}
+    <div class="nav-wrapper" id="nav">
+      <a href="/" class="brand-logo center"><img id="index-img" src='/media/Untitled-3.png'></a>
+      <ul id="nav-mobile" class="right">
+         {{#if loggedIn}}
         <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
+        <li class="li"><button id="logout" class="btn-no-style">logout</button></li>
         {{else}}
-        <button><a href="/login">login</a></button>
-        <button><a href="/signup">signup</a></button>
-        {{/if}}
-
-      </nav>
-    </header>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo center"><img src='.'></a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+        <li class="li"><button><a href="/login">Login</a></button></li>
+        <li class="li"><button><a href="/signup">Signup</a></button></li>
+         {{/if}}
       </ul>
     </div>
   </nav>
+    </header>
+ 
     <main>
       {{{ body }}}
     </main>

@@ -1,7 +1,8 @@
+
 button {
     background-color: #0694bc;
     border: 0;
-    padding: 1%;
+    padding: 4%;
     color: #f6e22e;
     font-weight: bold;
     transition: background-color .1s;
@@ -13,3 +14,25 @@ button:hover {
     background-color: #f6e22e;
     color: #0694bc
   }
+
+.li{
+  padding-right: 50px;
+  padding-top: 30px;
+}
+
+#index-img{
+  height: 130px;
+padding-top:10px;
+}
+
+.nav-wrapper{
+background-color: rgb(216, 227, 238);
+}
+
+#nav{
+  height: 140px;
+}
+
+#login-img{
+  padding:30px;
+}
