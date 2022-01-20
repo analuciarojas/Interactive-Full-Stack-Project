@@ -19,7 +19,10 @@
       </ul>
     </div>
   </nav>
-        <!-- The first quiz -->
+      </header>
+ 
+    <main>
+      <!-- The first quiz -->
         <div>
         {{#each questions}}
         <div class="form-group mt-4 mb-4">
@@ -33,10 +36,6 @@
         <button type="button" class="btn btn-primary w-100" id="button{{@index}}">Check your answer</button>
         {{/each}}
         </div>
-      </nav>
-    </header>
- 
-    <main>
       {{{ body }}}
     </main>
     <footer>
