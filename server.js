@@ -8,6 +8,7 @@ const sessionOptions = {
   cookie: {
     maxAge: 300000,
   },
+  resave: false,
   saveUninitialized: true,
 };
 

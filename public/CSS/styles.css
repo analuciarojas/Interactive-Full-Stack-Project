@@ -1,7 +1,12 @@
+
+html{
+  background: rgb(216, 227, 238);
+  overflow: hidden;
+}
 button {
     background-color: #0694bc;
     border: 0;
-    padding: 1%;
+    padding: 4%;
     color: #f6e22e;
     font-weight: bold;
     transition: background-color .1s;
@@ -13,3 +18,38 @@ button:hover {
     background-color: #f6e22e;
     color: #0694bc
   }
+
+.li{
+  padding-right: 100px;
+  padding-top: 60px;
+}
+
+#index{
+  height: 180px;
+padding-top:30px;
+}
+
+.nav-wrapper{
+background-color: white;
+}
+
+#nav{
+  height: 200px;
+}
+
+#login-img{
+  padding:30px;
+}
+
+#container{
+  margin-left: 20%;
+    margin-top: 2%;
+  width: 60%;
+}
+
+#card-title{
+  padding: 0px;
+  color: #0694bc;
+  margin-left: 20px;
+  font-weight: bold;
+}

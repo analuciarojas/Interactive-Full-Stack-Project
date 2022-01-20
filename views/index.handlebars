@@ -4,19 +4,25 @@
 <body>
   <div class="wrapper">
     <header>
-      <h1>
-        <a href="/public/media/Untitled-3.png">Quick Quack Quiz!</a>
-      </h1>
-      <nav>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <button><a href="/login">login</a></button>
-        <button><a href="/signup">signup</a></button>
-        {{/if}}
 
-        <!-- The first quiz -->
+      <nav>
+    <div class="nav-wrapper" id="nav">
+      <a href="/" class="brand-logo center"><img id="index" src='/media/Untitled-3.png'></a>
+      <ul id="nav-mobile" class="right">
+         {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
+        <li class="li"><button id="logout" class="btn-no-style">logout</button></li>
+        {{else}}
+        <li class="li"><button><a href="/login">Login</a></button></li>
+        <li class="li"><button><a href="/signup">Signup</a></button></li>
+         {{/if}}
+      </ul>
+    </div>
+  </nav>
+      </header>
+ 
+    <main>
+      <!-- The first quiz -->
         <div>
         {{#each questions}}
         <div class="form-group mt-4 mb-4">
@@ -30,9 +36,6 @@
         <button type="button" class="btn btn-primary w-100" id="button{{@index}}">Check your answer</button>
         {{/each}}
         </div>
-      </nav>
-    </header>
-    <main>
       {{{ body }}}
     </main>
     <footer>
