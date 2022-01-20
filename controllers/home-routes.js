@@ -22,6 +22,16 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
+router.get('/quiz', (req, res) => {
+  res.render('new-quiz')
+})
+
+router.get('/quizList', (req, res) => {
+  res.render('view')
+})
+
+
+
 // router.get('/', async (req, res) => {
 //   try {
 //     const dbQuizData = await Post.findAll({
