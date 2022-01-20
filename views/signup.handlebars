@@ -1,18 +1,28 @@
 <!-- Home button goes here -->
 <title>Sign Up</title>
-<h1>Please fill in the information below!</h1>
-<form class="signup-form">
-  <div>
-    <label for="email-signup">email:</label>
+<div class="row" >
+    <form id="container" class="signup-form login-form col s12 m7">
+      <div class="card" class="center">
+        <div class="card-image">
+          <img id="login-img"src="/media/Untitled-3.png">
+          <span id="card-title"class="card-title">Signup</span>
+        </div>
+        <div class="card-content">
+            <div>
+    <label for="email-signup">Email:</label>
     <input type="text" id="email-signup" />
   </div>
   <div>
-    <label for="password-signup">password:</label>
+    <label for="password-signup">Password:</label>
     <input type="password" id="password-signup" />
   </div>
-  <div>
-    <button type="submit">signup</button>
+        </div>
+        <div class="card-action">
+    <button type="submit">Signup</button>
+        </div>
+      </div>
+    </form>
   </div>
-</form>
+
 
 <script src="/js/signup.js"></script>
