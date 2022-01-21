@@ -1,28 +1,31 @@
 <!-- Needs "logo/home" and "pick avatar (future feature)" -->
 
 <title>Please Log In!</title>
- <div class="row" >
-    <form id="container" class="login-form col s12 m7">
-      <div class="card" class="center">
-        <div class="card-image">
-        <a href="/" class="brand-logo center"><img id="login-img" src='/media/Untitled-3.png'></a>
-          <span id="card-title"class="card-title">Login</span>
+<div class="row">
+  <form id="container" class="login-form col s12 m7">
+    <div class="card" class="center">
+      <div class="card-image">
+        <a href="/" class="brand-logo center"><img
+            id="login-img"
+            src="/media/Untitled-3.png"
+          /></a>
+        <span id="card-title" class="card-title">Login</span>
+      </div>
+      <div class="card-content">
+        <div>
+          <label for="email-login">Email:</label>
+          <input type="text" id="email-login" />
         </div>
-        <div class="card-content">
-            <div>
-    <label for="email-login">Email:</label>
-    <input type="text" id="email-login" />
-  </div>
-  <div>
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login" />
-  </div>
-        </div>
-        <div class="card-action">
-    <button type="submit">Login</button>
+        <div>
+          <label for="password-login">Password:</label>
+          <input type="password" id="password-login" />
         </div>
       </div>
-    </form>
-  </div>
+      <div class="card-action">
+        <button type="submit">Login</button>
+      </div>
+    </div>
+  </form>
+</div>
 
 <script src="/js/login.js"></script>

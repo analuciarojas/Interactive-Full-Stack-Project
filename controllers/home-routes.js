@@ -1,17 +1,38 @@
 const router = require("express").Router();
+const { Quiz, User } = require("../models/");
 
-router.get("/", (req, res) => {
-  res.render("dashboard", {
-    id: 1,
-    post_url: ".",
-    title: "Quick Quack Quiz",
-    created_at: new Date(),
-    vote_count: 10,
-    comments: [{}, {}],
-    user: {
-      username: "test_user",
-    },
-  });
+// GET all quizzez on the homepage
+router.get("/", async (req, res) => {
+  try {
+    const quizData = await Quiz.findAll({
+      include: [User],
+    });
+
+    const quizzez = quizData.map((post) => quiz.get({ plain: true }));
+
+    res.render("all-quizzez", { quizzez });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET a single quiz
+router.get("/quiz/:id", async (req, res) => {
+  try {
+    const quizData = await Quiz.findByPk(req.params.id, {
+      include: [User],
+    });
+
+    if (quizData) {
+      const quiz = quizData.get({ plain: true });
+
+      res.render("single-quiz", { quiz });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get("/login", (req, res) => {
@@ -22,13 +43,13 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/quiz", (req, res) => {
+router.get("/new", (req, res) => {
   res.render("new-quiz");
 });
 
-router.get("/quizList", (req, res) => {
-  res.render("view");
-});
+// router.get("/quizList", (req, res) => {
+//   res.render("view");
+// });
 
 // router.get('/', async (req, res) => {
 //   try {

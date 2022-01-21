@@ -6,7 +6,7 @@
 
         <nav>
           <div class="nav-wrapper" id="nav">
-            <a href="/" class="brand-logo center"><img
+            <a href="/dashboard" class="brand-logo center"><img
                 id="index"
                 src="/media/Untitled-3.png"
               /></a>
@@ -30,10 +30,9 @@
 
       <main>
         {{{body}}}
+
       </main>
-      <footer class="footer flex-row justify-center">
-        <a href="/dashboard/new">➕ New Quiz</a>
-      </footer>
+
     </div>
 
     {{#if loggedIn}}
@@ -41,5 +40,8 @@
     {{/if}}
 
   </body>
+  <footer class="footer flex-row justify-center">
+    <a href="/dashboard/new">➕ New Quiz</a>
+  </footer>
 
 </html>
