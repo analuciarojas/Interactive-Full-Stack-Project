@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
-  res.render("dashboard", {
+  res.render("index", {
     id: 1,
     post_url: ".",
     title: "Quick Quack Quiz",
@@ -28,6 +28,33 @@ router.get("/quiz", (req, res) => {
 
 router.get("/quizList", (req, res) => {
   res.render("view");
+});
+
+// GET Dashboard
+router.get("/", async (req, res) => {
+  try {
+    const quizData = await Quiz.findAll({
+      where: {
+        userId: req.session.userId,
+      },
+    });
+
+    const quizzez = quizData.map((post) => quiz.get({ plain: true }));
+
+    res.render("all-quizzez-admin", {
+      layout: "dashboard",
+      posts,
+    });
+  } catch (err) {
+    res.redirect("login");
+  }
+});
+
+//Get new post
+router.get("/new", (req, res) => {
+  res.render("new-quiz", {
+    layout: "dashboard",
+  });
 });
 
 // router.get('/', async (req, res) => {
