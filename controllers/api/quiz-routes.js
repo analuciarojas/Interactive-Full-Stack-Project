@@ -1,22 +1,13 @@
 const router = require("express").Router();
 const { Quiz } = require("../../models/");
+const withAuth = require("../../utils/auth");
 
 //CREATE a new quiz
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   const body = req.body;
   try {
     const newQuiz = await Quiz.create({ ...body, userId: req.session.userId });
     res.json(newQuiz);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Get route for Quizzes
-router.get("/", async (req, res) => {
-  try {
-    const allQuizzes = await Quiz.findAll();
-    res.json(allQuizzes);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -41,7 +32,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //Delete a quiz
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const [affectedRows] = Quiz.destroy({
       where: {

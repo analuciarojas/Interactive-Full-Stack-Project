@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Quiz, User } = require("../models/");
+const { Quiz, Comment, User } = require("../models/");
 
 // GET all quizzez on the homepage
 router.get("/", async (req, res) => {
@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
       include: [User],
     });
 
-    const quizzez = quizData.map((post) => quiz.get({ plain: true }));
+    const quizzez = quizData.map((quiz) => quiz.get({ plain: true }));
 
     res.render("all-quizzez", { quizzez });
   } catch (err) {
@@ -20,7 +20,13 @@ router.get("/", async (req, res) => {
 router.get("/quiz/:id", async (req, res) => {
   try {
     const quizData = await Quiz.findByPk(req.params.id, {
-      include: [User],
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
     });
 
     if (quizData) {

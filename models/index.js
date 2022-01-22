@@ -1,26 +1,24 @@
 const User = require("./User");
-const Category = require("./Category");
 const Quiz = require("./Quiz");
+const Comment = require("./Comment");
 
-Category.belongsTo(User, {
+Quiz.belongsTo(User, {
   foreignKey: "userId",
   onDelete: "CASCADE",
 });
 
-Category.hasMany(Quiz, {
-  foreignKey: "categoryId",
+Quiz.hasMany(Comment, {
+  foreignKey: "quizId",
   onDelete: "CASCADE",
 });
 
-Quiz.belongsTo(Category, {
-  foreignKey: "categoryId",
+Comment.belongsTo(User, {
+  foreignKey: "userId",
   onDelete: "CASCADE",
 });
 
 module.exports = {
   User,
-  Category,
+  Comment,
   Quiz,
 };
-
-module.exports = { User, Category, Quiz };
