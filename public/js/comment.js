@@ -21,5 +21,5 @@ const commentFormHandler = async function (event) {
 };
 
 document
-  .querySelector("#new-quiz-form")
+  .querySelector("#new-comment-form")
   .addEventListener("submit", commentFormHandler);
