@@ -6,6 +6,7 @@ class Quiz extends Model {}
 Quiz.init(
   {
     title: DataTypes.STRING,
+    questions: DataTypes.STRING,
     body: DataTypes.STRING,
   },
   {
