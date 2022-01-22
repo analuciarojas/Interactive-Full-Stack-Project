@@ -29,7 +29,7 @@ const deleteClickHandler = async function () {
 };
 
 document
-  .querySelector("#edit-post-form")
+  .querySelector("#edit-quiz-form")
   .addEventListener("submit", editFormHandler);
 document
   .querySelector("#delete-btn")

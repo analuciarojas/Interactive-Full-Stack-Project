@@ -1,37 +1,9 @@
 const router = require("express").Router();
-
-router.get("/", (req, res) => {
-  res.render("index", {
-    id: 1,
-    post_url: ".",
-    title: "Quick Quack Quiz",
-    created_at: new Date(),
-    vote_count: 10,
-    comments: [{}, {}],
-    user: {
-      username: "test_user",
-    },
-  });
-});
-
-router.get("/login", (req, res) => {
-  res.render("login");
-});
-
-router.get("/signup", (req, res) => {
-  res.render("signup");
-});
-
-router.get("/quiz", (req, res) => {
-  res.render("new-quiz");
-});
-
-router.get("/quizList", (req, res) => {
-  res.render("view");
-});
+const { Quiz } = require("../models/");
+const withAuth = require("../utils/auth");
 
 // GET Dashboard
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const quizData = await Quiz.findAll({
       where: {
@@ -39,34 +11,42 @@ router.get("/", async (req, res) => {
       },
     });
 
-    const quizzez = quizData.map((post) => quiz.get({ plain: true }));
+    const quizzez = quizData.map((quiz) => quiz.get({ plain: true }));
 
     res.render("all-quizzez-admin", {
       layout: "dashboard",
-      posts,
+      quizzez,
     });
   } catch (err) {
     res.redirect("login");
   }
 });
 
-//Get new post
-router.get("/new", (req, res) => {
+//Get new quiz
+router.get("/new", withAuth, (req, res) => {
   res.render("new-quiz", {
     layout: "dashboard",
   });
 });
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const dbQuizData = await Post.findAll({
-//       include: [User],
-//     });
-//     const posts = dbQuizData.map((dbQuizData) => post.get({ plain: true }));
-//     res.render('all-quizzes', { posts });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+//Get by id
+router.get("/edit/:id", withAuth, async (req, res) => {
+  try {
+    const quizData = await Quiz.findByPk(req.params.id);
+
+    if (quizData) {
+      const quiz = quizData.get({ plain: true });
+
+      res.render("edit-quiz", {
+        layout: "dashboard",
+        quiz,
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.redirect("login");
+  }
+});
 
 module.exports = router;

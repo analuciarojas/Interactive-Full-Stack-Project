@@ -35,32 +35,24 @@ router.get("/quiz/:id", async (req, res) => {
   }
 });
 
+//Get login data
 router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
   res.render("login");
 });
 
+//GET signup form
 router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
   res.render("signup");
 });
-
-router.get("/new", (req, res) => {
-  res.render("new-quiz");
-});
-
-// router.get("/quizList", (req, res) => {
-//   res.render("view");
-// });
-
-// router.get('/', async (req, res) => {
-//   try {
-//     const dbQuizData = await Post.findAll({
-//       include: [User],
-//     });
-//     const posts = dbQuizData.map((dbQuizData) => post.get({ plain: true }));
-//     res.render('all-quizzes', { posts });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;
