@@ -7,11 +7,12 @@ router.get("/", async (req, res) => {
     const quizData = await Quiz.findAll({
       include: [User],
     });
-
+    console.log(quizData);
     const quizzez = quizData.map((quiz) => quiz.get({ plain: true }));
 
     res.render("all-quizzez", { quizzez });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
