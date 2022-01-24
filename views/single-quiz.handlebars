@@ -16,9 +16,9 @@
   </article>
 
   {{#if quiz.Comments}}
-    <section class="card">
+    <section id="card-comments" class="card">
       <div class="card-header">
-        <h3>Comments</h3>
+        <h2>Comments</h2>
       </div>
 
       <div class="card-body">
@@ -50,6 +50,7 @@
             <div>
      <label class="form-label" for="comment-body">Comment</label>
    <textarea name="comment-body" class="form-input"></textarea>
+
         </div>
         <div class="card-action">
       <button type="submit" class="btn">Submit</button>
