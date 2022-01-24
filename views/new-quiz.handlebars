@@ -1,13 +1,30 @@
-<div class="post card">
-  <div class="card-header">
-    <h2>Create New Post</h2>
+
+
+<title>Create New Quiz</title>
+ <div class="row" id="container" >
+      <form id="new-quiz-form" class="card-body col s12 m7">
+      <div class="card" class="center">
+          <div class="card-header">
+    <h2>Create New Quiz</h2>
   </div>
-  <form id="new-quiz-form" class="card-body">
-    <label class="form-label" for="quiz-title">Title</label>
+        <div class="card-content">
+            <div>
+    <label class="form-label" for="quiz-title">Quiz Title</label>
     <input type="text" name="quiz-title" class="form-input" />
-    <label class="form-label" for="quiz-body">Content</label>
+  </div>
+  <div>
+    <label class="form-label" for="quiz-questions">Questions:</label>
+    <textarea name="quiz-questions" class="form-input"></textarea>
+  </div>
+    <div>
+      <label class="form-label" for="quiz-body">Answer Key:</label>
     <textarea name="quiz-body" class="form-input"></textarea>
+        </div>
+        </div>
+        <div class="card-action">
     <button type="submit" class="btn">Create</button>
-  </form>
-</div>
-<script src="/js/quiz.js"></script>
+        </div>
+      </div>
+    </form>
+  </div>
+<script src="/js/new.js"></script>

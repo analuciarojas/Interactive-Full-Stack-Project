@@ -1,0 +1,65 @@
+<div class="quiz">
+  <article class="card">
+    <div class="card-header flex-row justify-space-between">
+      <h2>{{quiz.title}}</h2>
+      <div>
+        Posted by
+        {{quiz.User.email}}
+        on
+        {{format_date quiz.createdAt}}
+      </div>
+    </div>
+    <div class="card-body">
+      {{quiz.questions}}
+      {{quiz.body}}
+    </div>
+  </article>
+
+  {{#if quiz.Comments}}
+    <section id="card-comments" class="card">
+      <div class="card-header">
+        <h2>Comments</h2>
+      </div>
+
+      <div class="card-body">
+        {{#each quiz.Comments}}
+          <div>
+            <p>
+              {{body}}
+            </p>
+            <p>
+              &mdash;
+              {{User.email}},
+              {{format_date createdAt}}
+            </p>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+  {{/if}}
+
+
+  <div class="row" id="container" >
+      <form id="new-comment-form" class="card-body col s12 m7">
+      <div class="card" class="center">
+          <div class="card-header">
+      <h2>Add New Comment</h2>
+  </div>
+        <div class="card-content">
+          <input type="hidden" name="quiz-id" value="{{quiz.id}}" />
+            <div>
+     <label class="form-label" for="comment-body">Comment</label>
+   <textarea name="comment-body" class="form-input"></textarea>
+
+        </div>
+        <div class="card-action">
+      <button type="submit" class="btn">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<script src="/js/comment.js"></script>

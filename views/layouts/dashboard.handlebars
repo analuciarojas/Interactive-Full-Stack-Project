@@ -12,7 +12,6 @@
   </head>
 
   <body class="flex-column min-100-vh">
-
      <nav>
     <div class="nav-wrapper" id="nav">
       <a href="/" class="brand-logo center"><img id="index" src='/media/Untitled-3.png'></a>
@@ -27,14 +26,23 @@
       </ul>
     </div>
   </nav>
-    <main class="col-auto">
+  
+  <h2 class="app-title"><a href="/dashboard">Your Dashboard</a></h1>
+    <div class="card-content">
+    <main class="dash col-auto">
       {{{body}}}
     </main>
+        </div>
+        <div class="card-action">
+      <a class="btn" id="dashboard-new" href="/dashboard/new">➕ New Quiz</a>
+        </div>
+      </div>
+    </form>
+  </div>
 
-    <footer class="flex-row justify-center">
 
-    </footer>
   </body>
 
+  <script src="/js/logout.js"></script>
+
 </html>
-<script src="/js/logout.js"></script>

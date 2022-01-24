@@ -5,12 +5,4 @@ const withAuth = (req, res, next) => {
     next();
   }
 };
-
-const bcrypt = require('bcrypt')
-const passwordConfirm = (plaintextpassword, hashpassword) => {
-  return bcrypt.compareSync(plaintextpassword, hashpassword)
-}
-
-
-module.exports = {passwordConfirm, withAuth};
-
+module.exports = withAuth;

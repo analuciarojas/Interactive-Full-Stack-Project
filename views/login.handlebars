@@ -1,25 +1,22 @@
-<!-- Needs "logo/home" and "pick avatar (future feature)" -->
-
-<title>Please Log In!</title>
- <div class="row" >
-    <form id="container" class="login-form col s12 m7">
+<div class="row" id="container" >
+      <form id="login-form" class="card-body col s12 m7">
       <div class="card" class="center">
-        <div class="card-image">
-        <a href="/" class="brand-logo center"><img id="login-img" src='/media/Untitled-3.png'></a>
-          <span id="card-title"class="card-title">Login</span>
-        </div>
+          <div class="card-header">
+    <h2>Login</h2>
+  </div>
         <div class="card-content">
             <div>
-    <label for="email-login">Email:</label>
-    <input type="text" id="email-login" />
+    <label class="form-label" for="email-input-login">Email</label>
+    <input type="text" class="form-input" id="email-input-login" />
   </div>
   <div>
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login" />
+    <label for="password-input-login" class="form-label">Password</label>
+    <input type="password" id="password-input-login" class="form-input"/>
   </div>
         </div>
         <div class="card-action">
-    <button type="submit">Login</button>
+    <button type="submit" id="login-btn" class="btn">Login!</button>
+    <a type="button" class="btn" href="/signup">Sign up</a>
         </div>
       </div>
     </form>

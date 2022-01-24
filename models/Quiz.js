@@ -1,9 +1,12 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Sequelize, Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/config");
+
 class Quiz extends Model {}
+
 Quiz.init(
   {
     title: DataTypes.STRING,
+    questions: DataTypes.STRING,
     body: DataTypes.STRING,
   },
   {

@@ -1,8 +1,9 @@
-const router = require('express').Router();
-const { Quiz } = require('../../models/');
-const withAuth = require('../../utils/auth');
-//CREATE a new post
-router.post('/', async (req, res) => {
+const router = require("express").Router();
+const { Quiz } = require("../../models/");
+const withAuth = require("../../utils/auth");
+
+//CREATE a new quiz
+router.post("/", withAuth, async (req, res) => {
   const body = req.body;
   try {
     const newQuiz = await Quiz.create({ ...body, userId: req.session.userId });
@@ -12,19 +13,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get route for Quizzes
-router.get('/', async (req, res) => {
-  try {
-    const allQuizzes = await Quiz.findAll()
-    res.json(allQuizzes) 
-  } catch (err) {
-    res.status(500).json(err);
-  }
-})
-
-
-//Post by id
-router.put('/:id', async (req, res) => {
+//Quiz by id
+router.put("/:id", async (req, res) => {
   try {
     const [affectedRows] = await Quiz.update(req.body, {
       where: {
@@ -40,8 +30,9 @@ router.put('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-//Delete a post
-router.delete('/:id', async (req, res) => {
+
+//Delete a quiz
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const [affectedRows] = Quiz.destroy({
       where: {
@@ -57,4 +48,5 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 module.exports = router;

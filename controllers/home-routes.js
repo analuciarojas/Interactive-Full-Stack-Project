@@ -1,51 +1,65 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const { Quiz, Comment, User } = require("../models/");
 
-router.get('/', (req, res) => {
-    res.render('index', {
-        id: 1,
-        post_url: '.',
-        title: 'Quick Quack Quiz',
-        created_at: new Date(),
-        vote_count: 10,
-        comments: [{}, {}],
-        user: {
-            username: 'test_user'
-    }
-  });
+// GET all quizzez on the homepage
+router.get("/", async (req, res) => {
+  try {
+    const quizData = await Quiz.findAll({
+      include: [User],
+    });
+    console.log(quizData);
+    const quizzez = quizData.map((quiz) => quiz.get({ plain: true }));
+
+    res.render("all-quizzez", { quizzez });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
-router.get('/login', (req, res) => {
-  res.render('login')
-})
+// GET a single quiz
+router.get("/quiz/:id", async (req, res) => {
+  try {
+    const quizData = await Quiz.findByPk(req.params.id, {
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
+    });
 
-router.get('/signup', (req, res) => {
-  res.render('signup')
-})
+    if (quizData) {
+      const quiz = quizData.get({ plain: true });
 
-router.get('/quiz', (req, res) => {
-  res.render('new-quiz')
-})
+      res.render("single-quiz", { quiz });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-router.get('/quizList', (req, res) => {
-  res.render('view')
-})
+//Get login data
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
+  res.render("login");
+});
 
+//GET signup form
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const dbQuizData = await Post.findAll({
-//       include: [User],
-//     });
-//     const posts = dbQuizData.map((dbQuizData) => post.get({ plain: true }));
-//     res.render('all-quizzes', { posts });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-
-    
-    
+  res.render("signup");
+});
 
 module.exports = router;

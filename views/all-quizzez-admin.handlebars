@@ -1,0 +1,12 @@
+<div id="dash-div">
+  {{#each quizzez}}
+    <a
+      id="dash"
+      class="form-label"
+      href="/dashboard/edit/{{id}}"
+    >
+      <span>{{title}}</span>
+      <span>{{format_date createdAt}}</span>
+    </a>
+  {{/each}}
+</div>

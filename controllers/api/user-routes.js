@@ -1,72 +1,68 @@
-const router = require('express').Router();
-const { User, Quiz, Category } = require('../../models');
-const {passwordConfirm} = require('../../utils/auth')
+const router = require("express").Router();
+const { User } = require("../../models");
 
-router.get('/', (req, res) => {
-    User.findAll({
-        attributes: { exclude: ['password'] }
-    })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+//Create a new user
+router.post("/", async (req, res) => {
+  try {
+    const newUser = await User.create({
+      email: req.body.email,
+      password: req.body.password,
     });
+
+    req.session.save(() => {
+      req.session.userId = newUser.id;
+      req.session.email = newUser.email;
+      req.session.loggedIn = true;
+
+      res.json(newUser);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/:id', (req, res) => {
-    User.findOne({
-        attributes: { exclude: ['password'] },
-        where: { 
-            id: req.params.id,
-            attribute: ['email']
-        },
-        include: [
-            {
-                model: Category,
-                attribute: ['id', 'title']
-            },
-            {
-                model: Quiz,
-                attribute: ['id', 'title']
-            }
-        ]
-    })
-})
-
-router.post('/signup', (req, res) => {
-    User.create({
+//Login by Email
+router.post("/login", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: {
         email: req.body.email,
-        password: req.body.password
-    })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
+      },
     });
+
+    if (!user) {
+      res.status(400).json({ message: "No user account found!" });
+      return;
+    }
+
+    const validPassword = user.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: "No user account found!" });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.userId = user.id;
+      req.session.email = user.email;
+      req.session.loggedIn = true;
+
+      res.json({ user, message: "You are now logged in!" });
+    });
+  } catch (err) {
+    res.status(400).json({ message: "No user account found!" });
+  }
 });
 
-router.post('/login', (req, res) => {
-    User.findOne({
-        where: {
-            email: req.body.email
-        }
-    }).then(dbUserData => {
-        if (!dbUserData) {
-            res.status(400).json({ message: 'No User with that email address' });
-            return;
-        }
-        const validPassword = passwordConfirm(req.body.password, dbUserData.password);
-        if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect password' });
-            return;
-            
-        }
-        req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.loggedIn = true;
-        });
-        res.json({ user: dbUserData, message: `Welcome ${ User } You are now logged in...` });
+//Logout of session
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
     });
+  } else {
+    res.status(404).end();
+  }
 });
 
 module.exports = router;
