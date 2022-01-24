@@ -16,7 +16,6 @@ button {
   margin-top: 80px;
 }
 
-
 button:hover {
   background-color: #f6e22e;
   color: #0694bc;
@@ -46,8 +45,8 @@ button:hover {
 
 #container {
   margin-left: 20%;
-  margin-top: 2%;
-  width: 60%;
+    margin-top: 2%;
+    width: 110%;
 }
 
 #card-title {
@@ -55,4 +54,24 @@ button:hover {
   color: #0694bc;
   margin-left: 20px;
   font-weight: bold;
+}
+
+.card-header h2{
+  padding: 3%;
+  margin: 0px;
+  color: #0694bc;
+  font-weight: 500;
+}
+
+.card-content label{
+  font-size: 18px;
+}
+
+.card-content textarea{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-action button{
+  margin-top: 10px;
 }

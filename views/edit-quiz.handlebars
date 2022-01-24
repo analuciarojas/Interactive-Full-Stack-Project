@@ -1,29 +1,39 @@
-<div class="quiz card">
-  <div class="card-header">
+
+<div class="row" id="container" >
+      <form id="edit-quiz-form" class="card-body col s12 m7">
+      <div class="card" class="center">
+          <div class="card-header">
     <h2>Edit Quiz</h2>
   </div>
-  <form id="edit-quiz-form" class="card-body">
-    <input type="hidden" name="quiz-id" value="{{quiz.id}}" />
-
-    <label class="form-label" for="quiz-title">Title</label>
+        <div class="card-content">
+          <input type="hidden" name="quiz-id" value="{{quiz.id}}" />
+            <div>
+    <label class="form-label" for="quiz-title">Quiz Title</label>
     <input
       type="text"
       name="quiz-title"
       value="{{quiz.title}}"
       class="form-input"
     />
-
+  </div>
+  <div>
     <label class="form-label" for="quiz-body">Content</label>
-    <textarea
+  <textarea
       name="quiz-questions"
       class="form-input"
     >{{quiz.questions}}</textarea>
-    <textarea name="quiz-body" class="form-input">{{quiz.body}}</textarea>
-
+  </div>
+    <div>
+      <label class="form-label" for="quiz-body">Answer Key:</label>
+        <textarea name="quiz-body" class="form-input">{{quiz.body}}</textarea>
+        </div>
+        </div>
+        <div class="card-action">
     <button type="submit" class="btn">Update</button>
-
-    <button type="button" id="delete-btn" class="btn">Delete</button>
-  </form>
-</div>
+        <button type="button" id="delete-btn" class="btn">Delete</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
 <script src="/js/edit.js"></script>
