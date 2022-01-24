@@ -1,6 +1,7 @@
 html {
   background: rgb(216, 227, 238);
-  overflow: hidden;
+  overflow: scroll;
+
 }
 button {
   background-color: #0694bc;
@@ -25,6 +26,13 @@ button:hover {
   margin-right: 50px;
 }
 
+.quizzez article{
+  margin-left: 50px;
+    margin-right: 50px;
+}
+nav{
+  margin-bottom: 150px;
+}
 
 #index {
   height: 180px;
@@ -33,6 +41,7 @@ button:hover {
 
 .nav-wrapper {
   background-color: white;
+  padding-bottom:50px;
 }
 
 #nav {
@@ -70,4 +79,19 @@ button:hover {
 
 .card-action button{
   margin-top: 10px;
+}
+
+.card-header div{
+  color: grey;
+  margin-left: 35px;
+}
+
+.card-body{
+  color: grey;
+  margin-left: 35px;
+  padding-bottom:10px;
+}
+
+#container{
+  overflow: scroll;
 }
