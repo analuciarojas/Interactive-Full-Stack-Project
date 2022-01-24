@@ -32,9 +32,12 @@ This is a interactive and responsive full-stack application that consist on gett
 
 ## Preview
 
+![main](https://github.com/analuciarojas/Quick-Quack-Quiz/blob/main/public/assets/img/Screenshot%202022-01-23%20at%2011.42.57%20PM.png?raw=true)
+
 ## Links
 
 - [URL of the GitHub repository](https://github.com/analuciarojas/Quick-Quack-Quiz)
+- [URL of the Heroku repository](https://quick-quack.herokuapp.com/)
 
 ## Contributors
 
