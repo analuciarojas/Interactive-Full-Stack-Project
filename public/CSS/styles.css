@@ -11,17 +11,21 @@ button {
   transition: background-color 0.1s;
   cursor: pointer;
   border-radius: 5px;
+  padding: 4px;
+  margin: 10px;
+  margin-top: 80px;
 }
+
 
 button:hover {
   background-color: #f6e22e;
   color: #0694bc;
 }
 
-.li {
-  padding-right: 100px;
-  padding-top: 60px;
+#logout-button{
+  margin-right: 50px;
 }
+
 
 #index {
   height: 180px;

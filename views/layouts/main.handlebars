@@ -12,17 +12,21 @@
   </head>
 
   <body class="flex-column min-100-vh">
-    <nav class="navbar">
-      <ul>
-        <li class="li-inline nav-item"><a href="/">Home</a></li>
-        <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
-        <li class="li-inline nav-item"><a href="/login">Login</a></li>
-        <li class="li-inline nav-item"><a
+
+     <nav>
+    <div class="nav-wrapper" id="nav">
+      <a href="/" class="brand-logo center"><img id="index" src='/media/Untitled-3.png'></a>
+      <ul id="nav-mobile" class="right">
+        <li><button><a href="/">Home</a></button></li>
+        <li> <button><a href="/dashboard">dashboard</a></button></li>
+        <li class="li"><button><a href="/login">Login</a></button></li>
+        <li><button id="logout-button"><a
             href="#"
             id="logout-link"
-          >Logout</a></li>
+          >Logout</a></button></li>
       </ul>
-    </nav>
+    </div>
+  </nav>
     <header class="hero">
       <h1 class="app-title"><a href="/">Quick Quack Quiz</a></h1>
     </header>
