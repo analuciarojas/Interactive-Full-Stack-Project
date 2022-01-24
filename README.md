@@ -10,34 +10,25 @@
 
 ## Description
 
+This is a interactive and responsive full-stack application that consist on getting to create quizzez for people to see and learn from, as well as learning from others quizzez. The user will be required to create an account and log in in order to create, comment on, and edit quizzez. This is created using node.js and express.js creating RESTful APIs. As well as MySQL, Handlebars.js, and Heroku to deploy the application. 
+
+
 ## Table of Contents
 
-- [Snippets](#snippets)
 - [Technologies](#technologies)
 - [Preview](#preview)
 - [Links](#links)
 - [Contributors](#contributors)
-
-## Snippets
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
 
 ## Technologies
 
 - HTML
 - CSS
 - JavaScript
-- Jquery
+- Handlebars.js
+- Express.js
+- Node.js
+- Heroku
 
 ## Preview
 
