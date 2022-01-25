@@ -37,7 +37,7 @@ This is a interactive and responsive full-stack application that consist on gett
 ## Links
 
 - [URL of the GitHub repository](https://github.com/analuciarojas/Quick-Quack-Quiz)
-- [URL of the Heroku repository](https://quick-quack.herokuapp.com/)
+- [URL of the Heroku repository](https://quick-quack-quiz.herokuapp.com/)
 
 ## Contributors
 
